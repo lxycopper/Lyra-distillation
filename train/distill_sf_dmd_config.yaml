@@ -1,0 +1,31 @@
+train_config: ""
+experiment: "lyra2"
+config_file: "lyra_2/_src/configs/config.py"
+teacher_ckpt: "/root/lyra/Lyra-2/checkpoints/model"
+student_ckpt: ""
+critic_ckpt: ""
+output_dir: "outputs/distill_sf_dmd_run1"
+experiment_opt: []
+
+max_steps: 3000
+log_every: 10
+save_every: 200
+seed: 42
+
+lr_g: 1.0e-5
+lr_d: 1.0e-5
+weight_decay: 0.0
+grad_clip_g: 1.0
+grad_clip_d: 1.0
+train_lora_only: true
+
+# Self-Forcing style alternating update:
+# every N steps update generator once, other steps update critic.
+generator_update_every: 2
+dmd_weight: 1.0
+critic_weight: 1.0
+normalizer_eps: 1.0e-6
+
+teacher_self_aug: false
+student_self_aug: true
+critic_self_aug: false
